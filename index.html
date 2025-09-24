@@ -790,30 +790,32 @@
             });
 
             // --- LÓGICA DO FORMULÁRIO DE RECRUTAMENTO ---
-            const form = document.querySelector('#recrutamento form');
-            
-            // **SUBSTITUA ESSE LINK PELO LINK DE CONVITE DO SEU GRUPO**
-            const whatsappGroupLink = 'https://chat.whatsapp.com/GKr34eCiUgILURI6LC3iQh';
+const form = document.querySelector('#recrutamento form');
+// **SUBSTITUA ESSE LINK PELO LINK DE CONVITE DO SEU GRUPO**
+const whatsappGroupLink = 'https://chat.whatsapp.com/SEU-LINK-AQUI';
 
-            if (form) {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
+if (form) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-                    const playerId = document.getElementById('player-id').value;
-                    const name = document.getElementById('name').value;
-                    const age = document.getElementById('age').value;
-                    const position = document.getElementById('position').value;
-                    const day = document.getElementById('day').value;
-                    const time = document.getElementById('time').value;
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
 
-                    const message = `*Nova Inscrição para Recrutamento - Brukamalo FC*\n\n*ID de Jogo:* ${playerId}\n*Nome:* ${name}\n*Idade:* ${age} anos\n*Posição:* ${position}\n*Dia da Semana:* ${day}\n*Horário:* ${time}\n\n_Inscrição enviada via site._`.trim();
+        const message = `*Nova Inscrição para Recrutamento - Brukamalo FC*
 
-                    const encodedMessage = encodeURIComponent(message);
-                    
-                    // CORRIGIDO: Agora usa o link do grupo + o texto da mensagem
-                    const whatsappUrl = `${whatsappGroupLink}?text=${encodedMessage}`;
+        *ID de Jogo:* ${data.id}
+        *Nome:* ${data.nome}
+        *Idade:* ${data.idade} anos
+        *Posição:* ${data.posicao}
+        *Dia da Semana:* ${data.dia}
+        *Horário:* ${data.horario}
+        _Inscrição enviada via site._`;
 
-                    window.open(whatsappUrl, '_blank');
+            const encodedMessage = encodeURIComponent(message);
+        
+            const whatsappUrl = `${whatsappGroupLink}?text=${encodedMessage}`;
+
+        window.open(whatsappUrl, '_blank');
                 });
             }
 
