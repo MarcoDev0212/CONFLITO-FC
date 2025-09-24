@@ -806,15 +806,7 @@
                     const day = document.getElementById('day').value;
                     const time = document.getElementById('time').value;
 
-                    const message = `*Nova Inscrição para Recrutamento - Brukamalo FC*
-
-*ID de Jogo:* ${playerId}
-*Nome:* ${name}
-*Idade:* ${age} anos
-*Posição:* ${position}
-*Dia da Semana:* ${day}
-*Horário:* ${time}
-_Inscrição enviada via site._`;
+                    const message = `*Nova Inscrição para Recrutamento - Brukamalo FC*\n\n*ID de Jogo:* ${playerId}\n*Nome:* ${name}\n*Idade:* ${age} anos\n*Posição:* ${position}\n*Dia da Semana:* ${day}\n*Horário:* ${time}\n\n_Inscrição enviada via site._`.trim();
 
                     const encodedMessage = encodeURIComponent(message);
                     
