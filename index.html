@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CONFLITO FC</title>
+    <title>Brukamalo FC - Onde a Paixão Encontra o Campo Virtual</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -563,7 +563,7 @@
     <div class="page-wrapper">
         <header>
             <div class="logo-container">
-                <h1>CONFLITO FC</h1>
+                <h1>Brukamalo FC</h1>
             </div>
             <p>Onde a Paixão Encontra o Campo Virtual</p>
         </header>
@@ -682,7 +682,7 @@
 
                 <div class="container content-section" id="recrutamento">
                     <h2>Entre para o Nosso Elenco!</h2>
-                    <p>Preencha os campos abaixo para iniciar seu processo de recrutamento e mostrar seu talento para a diretoria do CONFLITO FC.</p>
+                    <p>Preencha os campos abaixo para iniciar seu processo de recrutamento e mostrar seu talento para a diretoria do Brukamalo FC.</p>
                     <form class="form-container">
                         <div class="form-group">
                             <label for="player-id">ID de Jogo:</label>
@@ -726,7 +726,12 @@
                         </div>
                         <div class="form-group">
                             <label for="time">Horário Disponível:</label>
-                            <input type="text" id="time" name="horario" placeholder="Ex: Noite (20h-23h)" required>
+                            <select id="time" name="horario" required>
+                                <option value="" disabled selected>Selecione o horário</option>
+                                <option value="20:00">20:00</option>
+                                <option value="21:00">21:00</option>
+                                <option value="22:00">22:00</option>
+                            </select>
                         </div>
                         <button type="submit">Enviar Inscrição</button>
                     </form>
@@ -734,7 +739,7 @@
 
                 <div class="container content-section" id="contato">
                     <h2>Siga Nossas Redes Sociais!</h2>
-                    <p>Conecte-se conosco e não perca nenhum lance do CONFLITO FC.</p>
+                    <p>Conecte-se conosco e não perca nenhum lance do Brukamalo FC.</p>
                     <div class="social-links">
                         <a href="https://www.instagram.com/brukafc" target="_blank" class="instagram"><i class="fab fa-instagram"></i> Siga-nos no Instagram</a>
                         <a href="https://www.twitch.tv/brukamalo" target="_blank" class="twitch"><i class="fab fa-twitch"></i> Assista na Twitch</a>
@@ -746,96 +751,95 @@
         </div>
 
         <footer>
-            <p>&copy; 2025 CONFLITO FC. Construído com Titulos e Gols!</p>
-            <p>&copy; Desenvolvido por <b>dev.barbosa02@gmail.com</b></p>
+            <p>&copy; 2025 Brukamalo FC. Construído com Paixão e Gols!</p>
         </footer>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('nav a');
-    const sections = document.querySelectorAll('.content-section');
+            const navLinks = document.querySelectorAll('nav a');
+            const sections = document.querySelectorAll('.content-section');
 
-    const showSection = (targetId) => {
-        sections.forEach(section => {
-            section.classList.remove('active-screen');
-        });
-
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            targetSection.classList.add('active-screen');
-            targetSection.scrollIntoView({ behavior: 'smooth' });
-
-            const elementsToReveal = targetSection.querySelectorAll('.reveal');
-            elementsToReveal.forEach(el => el.classList.remove('active'));
-
-            setTimeout(() => {
-                elementsToReveal.forEach((el, index) => {
-                    setTimeout(() => {
-                        el.classList.add('active');
-                    }, index * 150);
+            const showSection = (targetId) => {
+                sections.forEach(section => {
+                    section.classList.remove('active-screen');
                 });
-            }, 100);
-        }
-    };
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active-screen');
 
-            navLinks.forEach(navLink => navLink.classList.remove('active'));
-            link.classList.add('active');
+                    const elementsToReveal = targetSection.querySelectorAll('.reveal');
+                    elementsToReveal.forEach(el => el.classList.remove('active'));
+                    
+                    setTimeout(() => {
+                        elementsToReveal.forEach((el, index) => {
+                            setTimeout(() => {
+                                el.classList.add('active');
+                            }, index * 150);
+                        });
+                    }, 100);
+                }
+            };
 
-            const targetId = link.getAttribute('data-target');
-            showSection(targetId);
-        });
-    });
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
 
-    // --- LÓGICA DO FORMULÁRIO DE RECRUTAMENTO ---
-    const form = document.querySelector('#recrutamento form');
-    // SUBSTITUA PELO SEU NÚMERO DE TELEFONE, INCLUINDO O CÓDIGO DO PAÍS (55) E DDD.
-    const whatsappNumber = '5551992520046';
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    link.classList.add('active');
 
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
+                    const targetId = link.getAttribute('data-target');
+                    showSection(targetId);
+                });
+            });
 
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
+            // --- LÓGICA DO FORMULÁRIO DE RECRUTAMENTO ---
+const form = document.querySelector('#recrutamento form');
+// **SUBSTITUA ESSE LINK PELO LINK DE CONVITE DO SEU GRUPO**
+const whatsappGroupLink = 'https://chat.whatsapp.com/GKr34eCiUgILURI6LC3iQh';
 
-            const message = `*Nova Inscrição para Recrutamento - Brukamalo FC*
+if (form) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-*ID de Jogo:* ${data.id}
-*Nome:* ${data.nome}
-*Idade:* ${data.idade} anos
-*Posição:* ${data.posicao}
-*Dia da Semana:* ${data.dia}
-*Horário:* ${data.horario}
-_Inscrição enviada via site._`;
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        const message = `*Nova Inscrição para Recrutamento - Brukamalo FC*
+
+        *ID de Jogo:* ${data.id}
+        *Nome:* ${data.nome}
+        *Idade:* ${data.idade} anos
+        *Posição:* ${data.posicao}
+        *Dia da Semana:* ${data.dia}
+        *Horário:* ${data.horario}
+        _Inscrição enviada via site._`;
 
             const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+        
+            const whatsappUrl = `${whatsappGroupLink}?text=${encodedMessage}`;
 
-            window.open(whatsappUrl, '_blank');
-        });
-    }
-
-    // Código para a animação "reveal" na rolagem
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            } else {
-                entry.target.classList.remove('active');
+        window.open(whatsappUrl, '_blank');
+                });
             }
-        });
-    }, {
-        threshold: 0.1
-    });
 
-    const revealElements = document.querySelectorAll('.reveal');
-    revealElements.forEach(el => observer.observe(el));
-});
+            // Código para a animação "reveal" na rolagem
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, {
+                threshold: 0.1 // O item se anima quando 10% dele estiver visível
+            });
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => observer.observe(el));
+        });
     </script>
 </body>
 </html>
