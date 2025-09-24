@@ -354,6 +354,10 @@
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
+        .form-container button:hover {
+            background-color: #B91C1C;
+            transform: scale(1.02);
+        }
 
         /* --- Seção de Redes Sociais --- */
         #contato p {
@@ -591,7 +595,7 @@
                                 <p><strong>ID:</strong> belhome7</p>
                             </div>
                             <div class="player-card reveal">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-yGp9itG1FGyFUNjsCI1eyqDx9bGsF2vXjS7Rt6PFjOqdwXjl6ZvHj&s=10" alt="Yuri">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-yGp9itG1FGyFUNjsCI1eyqDx9bGsF2vXjS7Rt6PFjOqdwXjl6ZvH6g3p&s=10" alt="Yuri">
                                 <h3>Yuri</h3>
                                 <p><strong>Camisa:</strong> 7</p>
                                 <p><strong>ID:</strong> Mediucre</p>
@@ -759,7 +763,7 @@
                 const targetSection = document.getElementById(targetId);
                 if (targetSection) {
                     targetSection.classList.add('active-screen');
-                    targetSection.scrollIntoView({ behavior: 'smooth' }); // Rolagem suave
+
                     const elementsToReveal = targetSection.querySelectorAll('.reveal');
                     elementsToReveal.forEach(el => el.classList.remove('active'));
                     
@@ -774,14 +778,52 @@
             };
 
             navLinks.forEach(link => {
-                link.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    navLinks.forEach(l => l.classList.remove('active'));
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
                     link.classList.add('active');
+
                     const targetId = link.getAttribute('data-target');
                     showSection(targetId);
                 });
             });
+
+            // --- LÓGICA DO FORMULÁRIO DE RECRUTAMENTO ---
+            const form = document.querySelector('#recrutamento form');
+            
+            // **SUBSTITUA ESSE LINK PELO LINK DE CONVITE DO SEU GRUPO**
+            const whatsappGroupLink = 'https://chat.whatsapp.com/GKr34eCiUgILURI6LC3iQh';
+
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    const playerId = document.getElementById('player-id').value;
+                    const name = document.getElementById('name').value;
+                    const age = document.getElementById('age').value;
+                    const position = document.getElementById('position').value;
+                    const day = document.getElementById('day').value;
+                    const time = document.getElementById('time').value;
+
+                    const message = `*Nova Inscrição para Recrutamento - Brukamalo FC*
+
+*ID de Jogo:* ${playerId}
+*Nome:* ${name}
+*Idade:* ${age} anos
+*Posição:* ${position}
+*Dia da Semana:* ${day}
+*Horário:* ${time}
+_Inscrição enviada via site._`;
+
+                    const encodedMessage = encodeURIComponent(message);
+                    
+                    // CORRIGIDO: Agora usa o link do grupo + o texto da mensagem
+                    const whatsappUrl = `${whatsappGroupLink}?text=${encodedMessage}`;
+
+                    window.open(whatsappUrl, '_blank');
+                });
+            }
 
             // Código para a animação "reveal" na rolagem
             const observer = new IntersectionObserver((entries) => {
