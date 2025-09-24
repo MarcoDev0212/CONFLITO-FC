@@ -752,89 +752,89 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const navLinks = document.querySelectorAll('nav a');
-            const sections = document.querySelectorAll('.content-section');
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('.content-section');
 
-            const showSection = (targetId) => {
-                sections.forEach(section => {
-                    section.classList.remove('active-screen');
-                });
+    const showSection = (targetId) => {
+        sections.forEach(section => {
+            section.classList.remove('active-screen');
+        });
 
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.classList.add('active-screen');
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+            targetSection.classList.add('active-screen');
+            targetSection.scrollIntoView({ behavior: 'smooth' });
 
-                    const elementsToReveal = targetSection.querySelectorAll('.reveal');
-                    elementsToReveal.forEach(el => el.classList.remove('active'));
-                    
+            const elementsToReveal = targetSection.querySelectorAll('.reveal');
+            elementsToReveal.forEach(el => el.classList.remove('active'));
+
+            setTimeout(() => {
+                elementsToReveal.forEach((el, index) => {
                     setTimeout(() => {
-                        elementsToReveal.forEach((el, index) => {
-                            setTimeout(() => {
-                                el.classList.add('active');
-                            }, index * 150);
-                        });
-                    }, 100);
-                }
-            };
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-
-                    navLinks.forEach(navLink => navLink.classList.remove('active'));
-                    link.classList.add('active');
-
-                    const targetId = link.getAttribute('data-target');
-                    showSection(targetId);
+                        el.classList.add('active');
+                    }, index * 150);
                 });
-            });
+            }, 100);
+        }
+    };
 
-            // --- LÓGICA DO FORMULÁRIO DE RECRUTAMENTO ---
-const form = document.querySelector('#recrutamento form');
-// **SUBSTITUA ESSE LINK PELO LINK DE CONVITE DO SEU GRUPO**
-const whatsappGroupLink = 'https://chat.whatsapp.com/G5bInYJf2WaEtox57jsqRz?mode=ems_wa_t';
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
 
-if (form) {
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+            navLinks.forEach(navLink => navLink.classList.remove('active'));
+            link.classList.add('active');
 
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
+            const targetId = link.getAttribute('data-target');
+            showSection(targetId);
+        });
+    });
 
-        const message = `*Nova Inscrição para Recrutamento - Brukamalo FC*
+    // --- LÓGICA DO FORMULÁRIO DE RECRUTAMENTO ---
+    const form = document.querySelector('#recrutamento form');
+    // SUBSTITUA PELO SEU NÚMERO DE TELEFONE, INCLUINDO O CÓDIGO DO PAÍS (55) E DDD.
+    const whatsappNumber = '5551992520046';
 
-        *ID de Jogo:* ${data.id}
-        *Nome:* ${data.nome}
-        *Idade:* ${data.idade} anos
-        *Posição:* ${data.posicao}
-        *Dia da Semana:* ${data.dia}
-        *Horário:* ${data.horario}
-        _Inscrição enviada via site._`;
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            const message = `*Nova Inscrição para Recrutamento - Brukamalo FC*
+
+*ID de Jogo:* ${data.id}
+*Nome:* ${data.nome}
+*Idade:* ${data.idade} anos
+*Posição:* ${data.posicao}
+*Dia da Semana:* ${data.dia}
+*Horário:* ${data.horario}
+_Inscrição enviada via site._`;
 
             const encodedMessage = encodeURIComponent(message);
-        
-            const whatsappUrl = `${whatsappGroupLink}?text=${encodedMessage}`;
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-        window.open(whatsappUrl, '_blank');
-                });
-            }
-
-            // Código para a animação "reveal" na rolagem
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    } else {
-                        entry.target.classList.remove('active');
-                    }
-                });
-            }, {
-                threshold: 0.1 // O item se anima quando 10% dele estiver visível
-            });
-
-            const revealElements = document.querySelectorAll('.reveal');
-            revealElements.forEach(el => observer.observe(el));
+            window.open(whatsappUrl, '_blank');
         });
+    }
+
+    // Código para a animação "reveal" na rolagem
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            } else {
+                entry.target.classList.remove('active');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach(el => observer.observe(el));
+});
     </script>
 </body>
 </html>
