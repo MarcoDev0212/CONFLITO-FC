@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brukamalo FC - Onde a Paixão Encontra o Campo Virtual</title>
+    <title>CONFLITO FC - Onde a Paixão Encontra o Campo Virtual</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -23,7 +23,7 @@
 
             --accent-color: var(--brukamalo-red);
             --secondary-accent-color: var(--brukamalo-white);
-            --tertiary-accent-color: #38A169;
+            --tertiary-accent-color: #38A169; /* Verde para destaque */
 
             --hover-nav-bg: #3182CE;
             --transition-speed: 0.6s ease-in-out;
@@ -283,26 +283,6 @@
             font-size: 1.6em;
             font-weight: 700;
         }
-
-        /* --- Seção de Notícias --- */
-        .news-item {
-            background-color: var(--brukamalo-dark-blue);
-            border: 1px solid var(--brukamalo-red);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: box-shadow 0.3s ease;
-        }
-        .news-item h3 {
-            font-family: 'Oswald', sans-serif;
-            color: var(--brukamalo-red);
-            font-size: 1.8em;
-            margin-bottom: 10px;
-            border-bottom: 1px dashed var(--dark-secondary-text-color);
-            padding-bottom: 8px;
-        }
-
         /* --- Seção de Recrutamento --- */
         .form-container {
             display: flex;
@@ -408,7 +388,6 @@
             box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
             border-top: 5px solid var(--brukamalo-red);
         }
-
         /* --- Animações --- */
         .reveal {
             opacity: 0;
@@ -443,43 +422,133 @@
             from { transform: translateY(0); }
             to { transform: translateY(-5px); }
         }
+        /* --- Estilos para o Campo de Futebol (Escalações) --- */
+        #escalacoes .tactic-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        #escalacoes .tactic-buttons button {
+            background-color: var(--brukamalo-dark-blue);
+            color: var(--brukamalo-white);
+            border: 2px solid var(--brukamalo-red);
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        #escalacoes .tactic-buttons button:hover {
+            background-color: var(--secondary-dark-blue);
+            border-color: var(--tertiary-accent-color);
+            transform: translateY(-3px);
+        }
+        #escalacoes .tactic-buttons button.active {
+            background-color: var(--brukamalo-red);
+            border-color: var(--brukamalo-white);
+            box-shadow: 0 0 10px var(--brukamalo-red);
+        }
+        /* Campo de futebol atualizado */
+        #escalacoes .football-field {
+            width: 100%;
+            max-width: 900px; /* Limita a largura para um aspecto mais realista */
+            aspect-ratio: 16/9; /* Proporção de tela de campo */
+            background-image: url('https://i.imgur.com/vH1M4W7.png'); /* Nova imagem de campo verde */
+            background-size: 100% 100%; /* Ajusta a imagem para cobrir todo o campo */
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            margin: 0 auto; /* Centraliza o campo */
+            border: 2px solid var(--brukamalo-white); /* Borda para destaque */
+        }
+        /* Posição do jogador atualizada */
+        .player-position {
+            position: absolute;
+            width: 70px; /* Tamanho ligeiramente maior */
+            height: 70px; /* Tamanho ligeiramente maior */
+            background-color: rgba(28, 43, 78, 0.9); /* Cor azul escuro do time */
+            border: 3px solid var(--brukamalo-white); /* Borda branca para contraste */
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column; /* Para nome e número */
+            align-items: center;
+            justify-content: center;
+            color: var(--brukamalo-white);
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: top 0.5s ease-in-out, left 0.5s ease-in-out, transform 0.3s ease, background-color 0.3s ease;
+            font-size: 0.85em; /* Fonte um pouco menor para caber nome e número */
+            padding: 5px;
+            box-sizing: border-box;
+            line-height: 1.2;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6), 0 0 15px rgba(229,62,62,0.5); /* Sombra e brilho vermelho */
+            animation: fadeIn 0.8s ease-out;
+            z-index: 10; /* Garante que o jogador esteja acima do radar */
+        }
+        .player-position::after { /* Adiciona um "radar" no chão */
+            content: '';
+            position: absolute;
+            bottom: -15px; /* Abaixo do jogador */
+            width: 50px;
+            height: 10px;
+            background-color: rgba(56,161,105, 0.6); /* Verde semi-transparente */
+            border-radius: 50%;
+            filter: blur(5px);
+            z-index: 5; /* Atrás do jogador */
+        }
+        .player-position:hover {
+            transform: scale(1.1);
+            background-color: var(--tertiary-accent-color); /* Verde ao passar o mouse */
+            border-color: var(--brukamalo-white);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.8), 0 0 25px var(--brukamalo-white);
+        }
+        .player-name {
+            display: block;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+        .player-number {
+            font-size: 0.7em;
+            opacity: 0.8;
+        }
 
         /* --- Responsividade (Mobile) --- */
         @media (max-width: 992px) {
             body {
-                padding-left: 0; /* Remove o padding da esquerda para a navegação */
-                padding-top: 100px; /* Mantém o espaço para o cabeçalho */
-                padding-bottom: 70px; /* Adiciona espaço para o menu inferior */
+                padding-left: 0;
+                padding-top: 100px;
+                padding-bottom: 70px;
             }
-
             .main-content-wrapper {
                 flex-direction: column;
             }
-
             header {
                 left: 0;
                 top: 0;
                 width: 100%;
                 padding: 1.5rem 0;
             }
-
             header h1 {
                 font-size: 2em;
             }
-
             header p {
                 font-size: 1.2em;
             }
-
             nav {
                 flex-direction: row;
                 flex-wrap: nowrap;
                 justify-content: space-around;
                 position: fixed;
-                bottom: 0; /* Ancorado na parte inferior */
+                bottom: 0;
                 left: 0;
                 width: 100%;
-                top: auto; /* Remove a âncora do topo */
+                top: auto;
                 height: auto;
                 border-right: none;
                 border-top: 3px solid var(--brukamalo-red);
@@ -493,15 +562,15 @@
                 flex-grow: 1;
                 font-size: 0.8em;
                 text-align: center;
-                flex-direction: column; /* Alinha ícone e texto na vertical */
+                flex-direction: column;
             }
             nav a i {
-                display: block; /* Mantém os ícones visíveis */
+                display: block;
                 font-size: 1.2em;
                 margin-bottom: 5px;
             }
             nav a span {
-                display: block; /* O texto da navegação é útil mesmo em mobile */
+                display: block;
             }
             nav a.active {
                 transform: none;
@@ -521,8 +590,15 @@
             .position-group h3 {
                 font-size: 1.6em;
             }
+            #escalacoes .football-field {
+                height: 400px; /* Ajusta a altura para telas menores */
+            }
+            .player-position {
+                width: 55px; /* Menor em mobile */
+                height: 55px; /* Menor em mobile */
+                font-size: 0.75em;
+            }
         }
-
         @media (max-width: 768px) {
             .player-grid {
                 grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -539,7 +615,6 @@
                 font-size: 1.4em;
             }
         }
-
         @media (max-width: 480px) {
             header h1 {
                 font-size: 1.8em;
@@ -554,7 +629,7 @@
                 grid-template-columns: 1fr;
             }
             nav a span {
-                display: none; /* Esconde o texto para economizar espaço em telas muito pequenas */
+                display: none;
             }
         }
     </style>
@@ -570,8 +645,7 @@
 
         <nav>
             <a href="#" data-target="elenco" class="active"><i class="fas fa-users"></i> <span>Elenco</span></a>
-            <a href="#" data-target="noticias"><i class="fas fa-newspaper"></i> <span>Notícias</span></a>
-            <a href="#" data-target="recrutamento"><i class="fas fa-bullhorn"></i> <span>Recrutamento</span></a>
+            <a href="#" data-target="escalacoes"><i class="fas fa-futbol"></i> <span>Escalações</span></a> <a href="#" data-target="recrutamento"><i class="fas fa-bullhorn"></i> <span>Recrutamento</span></a>
             <a href="#" data-target="contato"><i class="fas fa-globe"></i> <span>Redes Sociais</span></a>
         </nav>
 
@@ -660,24 +734,17 @@
                         </div>
                     </section>
                 </div>
-
-                <div class="container content-section" id="noticias">
-                    <h2>Últimas Notícias do Campo</h2>
-                    <div class="news-item reveal">
-                        <h3>🚨 Recrutamento Aberto! Chute Certo para o Sucesso!</h3>
-                        <p>Estamos buscando novos talentos para compor a nova geração do Brukamalo FC. Se você tem paixão pelo futebol virtual, habilidade com a bola nos pés (ou no controle!) e quer fazer parte de um time campeão, <strong>participe agora!</strong> Venha mostrar seu valor!</p>
-                        <p><strong>Data:</strong> 28/07/2025</p>
-                    </div>
-                    <div class="news-item reveal">
-                        <h3>✨ Golaço! Vitória Avassaladora no Amistoso!</h3>
-                        <p>Com um futebol de alto nível, muita garra e jogadas espetaculares, vencemos nosso último amistoso por <strong>3x0</strong>! Um verdadeiro show em campo, digno de aplausos. Parabéns a todo o elenco pela excelente performance e dedicação!</p>
-                        <p><strong>Data:</strong> 26/07/2025</p>
-                    </div>
-                    <div class="news-item reveal">
-                        <h3>Treinos Intensivos: Preparação a Mil para a Próxima Temporada!</h3>
-                        <p>Nossos jogadores estão suando a camisa nos treinos! Foco total na tática, condicionamento e entrosamento. A próxima temporada promete ser inesquecível para o Brukamalo FC!</p>
-                        <p><strong>Data:</strong> 20/07/2025</p>
-                    </div>
+                
+                <div class="container content-section" id="escalacoes">
+                    <h2>Nossas Escalações</h2>
+                    <p style="text-align: center; font-size: 1.1em; color: var(--dark-secondary-text-color);">Clique no esquema tático para visualizar a formação em campo.</p>
+                    <div class="tactic-buttons">
+                        <button class="tactic-button" data-tactic="4-4-2">4-4-2</button>
+                        <button class="tactic-button" data-tactic="3-5-2">3-5-2</button>
+                        <button class="tactic-button" data-tactic="4-2-3-1">4-2-3-1</button>
+                        <button class="tactic-button" data-tactic="5-3-2">5-3-2</button> </div>
+                    <div class="football-field">
+                        </div>
                 </div>
 
                 <div class="container content-section" id="recrutamento">
@@ -739,7 +806,7 @@
 
                 <div class="container content-section" id="contato">
                     <h2>Siga Nossas Redes Sociais!</h2>
-                    <p>Conecte-se conosco e não perca nenhum lance do Brukamalo FC.</p>
+                    <p>Conecte-se conosco e não perca nenhum lance do CONFLITO FC.</p>
                     <div class="social-links">
                         <a href="https://www.instagram.com/brukafc" target="_blank" class="instagram"><i class="fab fa-instagram"></i> Siga-nos no Instagram</a>
                         <a href="https://www.twitch.tv/brukamalo" target="_blank" class="twitch"><i class="fab fa-twitch"></i> Assista na Twitch</a>
@@ -751,27 +818,29 @@
         </div>
 
         <footer>
-            <p>&copy; 2025 Brukamalo FC. Construído com Paixão e Gols!</p>
+            <p>&copy; 2025 CONFLITO FC.</p>
+            <p>&copy; Desenvolvido por <b>dev.barbosa02@gmail.com</b></p>
         </footer>
     </div>
-
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navLinks = document.querySelectorAll('nav a');
             const sections = document.querySelectorAll('.content-section');
-
+    
             const showSection = (targetId) => {
                 sections.forEach(section => {
                     section.classList.remove('active-screen');
                 });
-
+    
                 const targetSection = document.getElementById(targetId);
                 if (targetSection) {
                     targetSection.classList.add('active-screen');
-
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+    
                     const elementsToReveal = targetSection.querySelectorAll('.reveal');
                     elementsToReveal.forEach(el => el.classList.remove('active'));
-                    
+    
                     setTimeout(() => {
                         elementsToReveal.forEach((el, index) => {
                             setTimeout(() => {
@@ -781,49 +850,47 @@
                     }, 100);
                 }
             };
-
+    
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-
+    
                     navLinks.forEach(navLink => navLink.classList.remove('active'));
                     link.classList.add('active');
-
+    
                     const targetId = link.getAttribute('data-target');
                     showSection(targetId);
                 });
             });
-
+    
             // --- LÓGICA DO FORMULÁRIO DE RECRUTAMENTO ---
-const form = document.querySelector('#recrutamento form');
-// **SUBSTITUA ESSE LINK PELO LINK DE CONVITE DO SEU GRUPO**
-const whatsappGroupLink = 'https://chat.whatsapp.com/GKr34eCiUgILURI6LC3iQh';
-
-if (form) {
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-
-        const message = `*Nova Inscrição para Recrutamento - Brukamalo FC*
-
-        *ID de Jogo:* ${data.id}
-        *Nome:* ${data.nome}
-        *Idade:* ${data.idade} anos
-        *Posição:* ${data.posicao}
-        *Dia da Semana:* ${data.dia}
-        *Horário:* ${data.horario}
-        _Inscrição enviada via site._`;
-
-            const encodedMessage = encodeURIComponent(message);
-        
-            const whatsappUrl = `${whatsappGroupLink}?text=${encodedMessage}`;
-
-        window.open(whatsappUrl, '_blank');
+            const form = document.querySelector('#recrutamento form');
+            const whatsappNumber = '5551992520046'; // SUBSTITUA PELO SEU NÚMERO
+    
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+    
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData.entries());
+    
+                    const message = `*Nova Inscrição para Recrutamento - CONFLITO FC*
+    
+*ID de Jogo:* ${data.id}
+*Nome:* ${data.nome}
+*Idade:* ${data.idade} anos
+*Posição:* ${data.posicao}
+*Dia da Semana:* ${data.dia}
+*Horário:* ${data.horario}
+_Inscrição enviada via site._`;
+    
+                    const encodedMessage = encodeURIComponent(message);
+                    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+                    window.open(whatsappUrl, '_blank');
                 });
             }
-
+    
             // Código para a animação "reveal" na rolagem
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -834,11 +901,121 @@ if (form) {
                     }
                 });
             }, {
-                threshold: 0.1 // O item se anima quando 10% dele estiver visível
+                threshold: 0.1
             });
-
+    
             const revealElements = document.querySelectorAll('.reveal');
             revealElements.forEach(el => observer.observe(el));
+    
+            // --- LÓGICA DAS ESCALAÇÕES ---
+            const tacticButtons = document.querySelectorAll('.tactic-button');
+            const field = document.querySelector('.football-field');
+    
+            // Dados dos jogadores com nome e número da camisa
+            const playersData = [
+                { name: 'Muralha', number: '01' },
+                { name: 'L. Corredor', number: '02' },
+                { name: 'Zé Zaga', number: '04' },
+                { name: 'Yuri', number: '07' },
+                { name: 'Braga', number: '09' },
+                { name: 'Markito', number: '10' },
+                { name: 'Bellhome', number: '11' },
+                { name: 'Canela', number: '14' },
+                { name: 'Thales', number: '22' },
+                { name: 'Sandro', number: '69' },
+                // Adicione outros 1 jogador para completar os 11 de linha (excluindo goleiro)
+                { name: 'Novo Zaga', number: '05' },
+            ];
+            
+            // Definição dos esquemas táticos
+            const tactics = {
+                '4-4-2': [
+                    { player: 'Muralha', top: '90%', left: '50%' }, // Goleiro
+                    { player: 'L. Corredor', top: '75%', left: '15%' }, // Lateral Esq
+                    { player: 'Zé Zaga', top: '78%', left: '40%' }, // Zagueiro Esq
+                    { player: 'Novo Zaga', top: '78%', left: '60%' }, // Zagueiro Dir
+                    { player: 'Thales', top: '75%', left: '85%' }, // Lateral Dir
+                    { player: 'Markito', top: '50%', left: '20%' }, // Meia Esq
+                    { player: 'Sandro', top: '50%', left: '40%' }, // Volante Esq
+                    { player: 'Canela', top: '50%', left: '60%' }, // Volante Dir
+                    { player: 'Yuri', top: '50%', left: '80%' }, // Meia Dir
+                    { player: 'Braga', top: '25%', left: '40%' }, // Atacante Esq
+                    { player: 'Bellhome', top: '25%', left: '60%' }, // Atacante Dir
+                ],
+                '3-5-2': [
+                    { player: 'Muralha', top: '90%', left: '50%' }, // Goleiro
+                    { player: 'Zé Zaga', top: '75%', left: '30%' }, // Zagueiro Esq
+                    { player: 'Novo Zaga', top: '78%', left: '50%' }, // Zagueiro Central
+                    { player: 'Thales', top: '75%', left: '70%' }, // Zagueiro Dir
+                    { player: 'L. Corredor', top: '55%', left: '10%' }, // Ala Esq
+                    { player: 'Markito', top: '60%', left: '35%' }, // Meia Central Esq
+                    { player: 'Sandro', top: '60%', left: '65%' }, // Meia Central Dir
+                    { player: 'Canela', top: '40%', left: '50%' }, // Meia Atacante
+                    { player: 'Yuri', top: '55%', left: '90%' }, // Ala Dir
+                    { player: 'Braga', top: '20%', left: '40%' }, // Atacante Esq
+                    { player: 'Bellhome', top: '20%', left: '60%' }, // Atacante Dir
+                ],
+                '4-2-3-1': [
+                    { player: 'Muralha', top: '90%', left: '50%' }, // Goleiro
+                    { player: 'L. Corredor', top: '75%', left: '15%' }, // Lateral Esq
+                    { player: 'Zé Zaga', top: '78%', left: '40%' }, // Zagueiro Esq
+                    { player: 'Novo Zaga', top: '78%', left: '60%' }, // Zagueiro Dir
+                    { player: 'Thales', top: '75%', left: '85%' }, // Lateral Dir
+                    { player: 'Sandro', top: '60%', left: '40%' }, // Volante Esq
+                    { player: 'Canela', top: '60%', left: '60%' }, // Volante Dir
+                    { player: 'Markito', top: '40%', left: '25%' }, // Meia Atacante Esq
+                    { player: 'Yuri', top: '40%', left: '50%' }, // Meia Atacante Central
+                    { player: 'Bellhome', top: '40%', left: '75%' }, // Meia Atacante Dir
+                    { player: 'Braga', top: '15%', left: '50%' }, // Centroavante
+                ],
+                 '5-3-2': [
+                    { player: 'Muralha', top: '90%', left: '50%' }, // Goleiro
+                    { player: 'L. Corredor', top: '78%', left: '10%' }, // Ala Esq
+                    { player: 'Zé Zaga', top: '80%', left: '30%' }, // Zagueiro Esq
+                    { player: 'Novo Zaga', top: '82%', left: '50%' }, // Zagueiro Central
+                    { player: 'Thales', top: '80%', left: '70%' }, // Zagueiro Dir
+                    { player: 'Sandro', top: '78%', left: '90%' }, // Ala Dir
+                    { player: 'Markito', top: '50%', left: '30%' }, // Meia Esq
+                    { player: 'Canela', top: '50%', left: '50%' }, // Meia Central
+                    { player: 'Yuri', top: '50%', left: '70%' }, // Meia Dir
+                    { player: 'Braga', top: '20%', left: '40%' }, // Atacante Esq
+                    { player: 'Bellhome', top: '20%', left: '60%' }, // Atacante Dir
+                ]
+            };
+    
+            const updateField = (tactic) => {
+                field.innerHTML = ''; // Limpa o campo
+                const formation = tactics[tactic];
+                if (!formation) return;
+    
+                formation.forEach(playerPos => {
+                    const playerData = playersData.find(p => p.name === playerPos.player);
+                    if (!playerData) return; // Se o jogador não for encontrado, não o renderiza
+    
+                    const playerDiv = document.createElement('div');
+                    playerDiv.classList.add('player-position');
+                    playerDiv.style.top = playerPos.top;
+                    playerDiv.style.left = playerPos.left;
+                    playerDiv.innerHTML = `
+                        <span class="player-name">${playerData.name}</span>
+                        <span class="player-number">${playerData.number}</span>
+                    `;
+                    field.appendChild(playerDiv);
+                });
+            };
+    
+            tacticButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tacticButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const tactic = button.getAttribute('data-tactic');
+                    updateField(tactic);
+                });
+            });
+    
+            // Escalação inicial ao carregar a página
+            updateField('4-4-2');
+            document.querySelector('.tactic-button[data-tactic="4-4-2"]').classList.add('active');
         });
     </script>
 </body>
