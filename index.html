@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CONFLITO FC - Onde a Paixão Encontra o Campo Virtual</title>
+    <title>CONFLITO FC</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -638,7 +638,7 @@
     <div class="page-wrapper">
         <header>
             <div class="logo-container">
-                <h1>Brukamalo FC</h1>
+                <h1>CONFLITO FC</h1>
             </div>
             <p>Onde a Paixão Encontra o Campo Virtual</p>
         </header>
@@ -739,17 +739,15 @@
                     <h2>Nossas Escalações</h2>
                     <p style="text-align: center; font-size: 1.1em; color: var(--dark-secondary-text-color);">Clique no esquema tático para visualizar a formação em campo.</p>
                     <div class="tactic-buttons">
-                        <button class="tactic-button" data-tactic="4-4-2">4-4-2</button>
                         <button class="tactic-button" data-tactic="3-5-2">3-5-2</button>
-                        <button class="tactic-button" data-tactic="4-2-3-1">4-2-3-1</button>
-                        <button class="tactic-button" data-tactic="5-3-2">5-3-2</button> </div>
+                        <button class="tactic-button" data-tactic="4-2-3-1">4-2-3-1</button></div>
                     <div class="football-field">
                         </div>
                 </div>
 
                 <div class="container content-section" id="recrutamento">
                     <h2>Entre para o Nosso Elenco!</h2>
-                    <p>Preencha os campos abaixo para iniciar seu processo de recrutamento e mostrar seu talento para a diretoria do Brukamalo FC.</p>
+                    <p>Preencha os campos abaixo para iniciar seu processo de recrutamento e mostrar seu talento para a diretoria do CONFLITO FC.</p>
                     <form class="form-container">
                         <div class="form-group">
                             <label for="player-id">ID de Jogo:</label>
@@ -819,7 +817,6 @@
 
         <footer>
             <p>&copy; 2025 CONFLITO FC.</p>
-            <p>&copy; Desenvolvido por <b>dev.barbosa02@gmail.com</b></p>
         </footer>
     </div>
     
@@ -874,7 +871,7 @@
                     const formData = new FormData(form);
                     const data = Object.fromEntries(formData.entries());
     
-                    const message = `*Nova Inscrição para Recrutamento - CONFLITO FC*
+                    const message = `*Nova Inscrição para Recrutamento - Brukamalo FC*
     
 *ID de Jogo:* ${data.id}
 *Nome:* ${data.nome}
@@ -929,31 +926,18 @@ _Inscrição enviada via site._`;
             
             // Definição dos esquemas táticos
             const tactics = {
-                '4-4-2': [
-                    { player: 'Muralha', top: '90%', left: '50%' }, // Goleiro
-                    { player: 'L. Corredor', top: '75%', left: '15%' }, // Lateral Esq
-                    { player: 'Zé Zaga', top: '78%', left: '40%' }, // Zagueiro Esq
-                    { player: 'Novo Zaga', top: '78%', left: '60%' }, // Zagueiro Dir
-                    { player: 'Thales', top: '75%', left: '85%' }, // Lateral Dir
-                    { player: 'Markito', top: '50%', left: '20%' }, // Meia Esq
-                    { player: 'Sandro', top: '50%', left: '40%' }, // Volante Esq
-                    { player: 'Canela', top: '50%', left: '60%' }, // Volante Dir
-                    { player: 'Yuri', top: '50%', left: '80%' }, // Meia Dir
-                    { player: 'Braga', top: '25%', left: '40%' }, // Atacante Esq
-                    { player: 'Bellhome', top: '25%', left: '60%' }, // Atacante Dir
-                ],
-                '3-5-2': [
-                    { player: 'Muralha', top: '90%', left: '50%' }, // Goleiro
-                    { player: 'Zé Zaga', top: '75%', left: '30%' }, // Zagueiro Esq
-                    { player: 'Novo Zaga', top: '78%', left: '50%' }, // Zagueiro Central
-                    { player: 'Thales', top: '75%', left: '70%' }, // Zagueiro Dir
-                    { player: 'L. Corredor', top: '55%', left: '10%' }, // Ala Esq
-                    { player: 'Markito', top: '60%', left: '35%' }, // Meia Central Esq
-                    { player: 'Sandro', top: '60%', left: '65%' }, // Meia Central Dir
-                    { player: 'Canela', top: '40%', left: '50%' }, // Meia Atacante
-                    { player: 'Yuri', top: '55%', left: '90%' }, // Ala Dir
-                    { player: 'Braga', top: '20%', left: '40%' }, // Atacante Esq
-                    { player: 'Bellhome', top: '20%', left: '60%' }, // Atacante Dir
+            '3-5-2': [
+                    { player: 'Muralha', top: '85%', left: '44%' }, // Goleiro
+                    { player: 'Zé Zaga', top: '75%', left: '22%' }, // Zagueiro Esq
+                    { player: 'Novo Zaga', top: '65%', left: '44%' }, // Zagueiro Central
+                    { player: 'Thales', top: '75%', left: '65%' }, // Zagueiro Dir
+                    { player: 'L. Corredor', top: '40%', left: '15%' }, // Ala Esq
+                    { player: 'Sandro', top: '55%', left: '33%' }, // Meia Central Esq
+                    { player: 'Sandro', top: '55%', left: '55%' }, // Meia Central Dir
+                    { player: 'Markito', top: '35%', left: '44%' }, // Meia Atacante
+                    { player: 'Yuri', top: '40%', left: '75%' }, // Ala Dir
+                    { player: 'Braga', top: '10%', left: '33%' }, // Atacante Esq
+                    { player: 'Bellhome', top: '10%', left: '55%' }, // Atacante Dir
                 ],
                 '4-2-3-1': [
                     { player: 'Muralha', top: '90%', left: '50%' }, // Goleiro
@@ -967,20 +951,7 @@ _Inscrição enviada via site._`;
                     { player: 'Yuri', top: '40%', left: '50%' }, // Meia Atacante Central
                     { player: 'Bellhome', top: '40%', left: '75%' }, // Meia Atacante Dir
                     { player: 'Braga', top: '15%', left: '50%' }, // Centroavante
-                ],
-                 '5-3-2': [
-                    { player: 'Muralha', top: '90%', left: '50%' }, // Goleiro
-                    { player: 'L. Corredor', top: '78%', left: '10%' }, // Ala Esq
-                    { player: 'Zé Zaga', top: '80%', left: '30%' }, // Zagueiro Esq
-                    { player: 'Novo Zaga', top: '82%', left: '50%' }, // Zagueiro Central
-                    { player: 'Thales', top: '80%', left: '70%' }, // Zagueiro Dir
-                    { player: 'Sandro', top: '78%', left: '90%' }, // Ala Dir
-                    { player: 'Markito', top: '50%', left: '30%' }, // Meia Esq
-                    { player: 'Canela', top: '50%', left: '50%' }, // Meia Central
-                    { player: 'Yuri', top: '50%', left: '70%' }, // Meia Dir
-                    { player: 'Braga', top: '20%', left: '40%' }, // Atacante Esq
-                    { player: 'Bellhome', top: '20%', left: '60%' }, // Atacante Dir
-                ]
+                ]     
             };
     
             const updateField = (tactic) => {
@@ -1014,7 +985,7 @@ _Inscrição enviada via site._`;
             });
     
             // Escalação inicial ao carregar a página
-            updateField('4-4-2');
+            updateField('3-5-2');
             document.querySelector('.tactic-button[data-tactic="4-4-2"]').classList.add('active');
         });
     </script>
